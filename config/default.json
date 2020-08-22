@@ -1,5 +1,5 @@
 {
-    "mongoURI": "mongodb+srv://<username>:<password>@devconnector.ls6rn.mongodb.net/<dbname>?retryWrites=true&w=majority",
+    "mongoURI": "mongodb+srv://sametibs7:samedow66@devconnector.ls6rn.mongodb.net/<dbname>?retryWrites=true&w=majority",
     "jwtSecret": "mysecrettoken",
     "githubClientId": "a9c464be95dd6933ba10",
     "githubSecret": "ac06bc7adfc2321b192d9c9a0d34c0a8592a81cd"
