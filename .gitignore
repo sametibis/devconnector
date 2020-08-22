@@ -1,2 +1,4 @@
-config
+config/*
+
+!config/db.json
 node_modules
