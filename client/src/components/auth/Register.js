@@ -1,4 +1,7 @@
 import React, { Fragment, useState } from 'react';
+import { Link } from 'react-router-dom';
+
+
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -10,25 +13,49 @@ const Register = () => {
   });
 
   const { name, email, password, password2 } = formData;
-  
+
   const onChange = (e) => {
     setFormData({
       // ...formData : copy states
       // [e.target.name] : input'un name kısmını key olarak kullanıyoruz (name = 'email' vb. gibi)
       // e.target.value : value to key
-      ...formData, [e.target.name]: e.target.value,
+      ...formData,
+      [e.target.name]: e.target.value,
     });
   };
 
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (password !== password2) {
+      console.log('Password dont match');
+    } else {
+        console.log('SUCCESS');
+    }
 
-  const onSubmit = (e) => {
-      e.preventDefault();
-      if(password !== password2) {
-          console.log('Password dont match');
-      } else {
-          console.log(formData);
-      }
-  }
+    // else {
+    //   const newUser = {
+    //       name: name,
+    //       email,
+    //       password,
+    //   }
+
+    //   try {
+    //       const config = {
+    //           headers: {
+    //               'Content-Type': 'application/json'
+    //           }
+    //       }
+    //       const body = JSON.stringify(newUser); // obj(newUser) to string
+
+    //       const res = await axios.post('/api/users', body, config);
+
+    //       console.log(res.data); // token
+
+    //   } catch (err) {
+    //       console.error(err.response.data);
+    //   }
+    // }
+  };
 
   return (
     <Fragment>
@@ -86,7 +113,7 @@ const Register = () => {
         <input type='submit' className='btn btn-primary' value='Register' />
       </form>
       <p className='my-1'>
-        Already have an account? <a href='login.html'>Sign In</a>
+        Already have an account? <Link to='/login'>Sign In</Link>
       </p>
     </Fragment>
   );
