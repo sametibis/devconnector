@@ -20,7 +20,7 @@ const Dashboard = ({
     <Fragment>
       <h1 className='large text-primary'>Dashboard</h1>
       <p className='lead'>
-        <i className='fas fa-user'> </i> Welcome {user && user.name}
+        <i className='fas fa-user'> </i> Welcome, <strong style={{color: '#00ffcc'}}>{user && user.name}</strong>
       </p>
       {profile !== null ? (
         <Fragment> Has </Fragment>
