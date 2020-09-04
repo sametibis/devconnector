@@ -13,12 +13,13 @@ import AddExperience from './components/profile-form/AddExperience';
 import AddEducation from './components/profile-form/AddEducation';
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
-
-
+import Posts from './components/posts/Posts';
 
 // Redux;
 import { Provider } from 'react-redux'; // connect react and redux
 import store from './store';
+
+
 import { loadUser } from './actions/auth';
 import setAuthToken from './utilities/setAuthToken';
 import './App.css';
@@ -46,7 +47,7 @@ const App = () => {
               <Route exact path='/login' component={Login} />
               <Route exact path='/profiles' component={Profiles} />
               <Route exact path='/profile/:id' component={Profile} />
-              
+
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
               <PrivateRoute
                 exact
@@ -63,13 +64,18 @@ const App = () => {
                 path='/add-experience'
                 component={AddExperience}
               />
-              
+
               <PrivateRoute
                 exact
                 path='/add-education'
                 component={AddEducation}
               />
 
+              <PrivateRoute 
+                exact 
+                path='/posts' 
+                component={Posts} 
+              />
 
             </Switch>
           </section>

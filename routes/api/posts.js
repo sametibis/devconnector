@@ -19,6 +19,8 @@ router.post(
 
     try {
       const user = await User.findById(req.user.id).select('-password');
+      // select yerine ;
+      // populate('user', [name, email, avatar, date])
 
       const newPost = new Post({
         text: req.body.text,
