@@ -3,6 +3,7 @@ import {
   POST_ERROR,
   UPDATE_LIKES,
   DELETE_POST,
+  ADD_POST,
 } from '../actions/types';
 
 const initialState = {
@@ -16,6 +17,14 @@ export default function (state = initialState, action) {
   const { type, payload } = action; // const type = action.type; const payload = action.payload
 
   switch (type) {
+    case ADD_POST:
+      return {
+        ...state,
+        posts: [payload, ...state.posts], // üstüne eklemesi için
+        // posts [...state.posts, payload]: alta ekliyor 
+        loading: false,
+      };
+
     case GET_POSTS:
       return {
         ...state,
