@@ -109,7 +109,7 @@ router.delete('/:id', auth, async (req, res) => {
 
 router.put('/like/:id', auth, async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
+    const post = await Post.findById(req.params.id); // :id = post id
 
     // A user has already been like
     if (
