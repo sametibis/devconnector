@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { connect } from 'react-redux'; // like, unlike, remove post gibi işlemler için
-import { addLike, removeLike } from '../../actions/post';
+import { addLike, removeLike, deletePost } from '../../actions/post';
 
 const PostItem = ({
+  deletePost,
   addLike,
   removeLike,
   post: { _id, text, name, avatar, user, likes, comments, date },
@@ -14,7 +15,7 @@ const PostItem = ({
   return (
     <div class='post bg-white p-1 my-1' style={{ borderRadius: '25px' }}>
       <div>
-        <Link>
+        <Link to={`/profile/${user}`}>
           <img class='round-img' src={avatar} alt='' />
           <h4> {name} </h4>
         </Link>
@@ -46,7 +47,12 @@ const PostItem = ({
           )}
         </Link>
         {!auth.loading && auth.user._id === user && (
-          <button type='button' class='btn btn-danger' title='Remove'>
+          <button
+            onClick={() => deletePost(_id)}
+            type='button'
+            class='btn btn-danger'
+            title='Remove'
+          >
             <i class='fas fa-times'></i>
           </button>
         )}
@@ -56,6 +62,7 @@ const PostItem = ({
 };
 
 PostItem.propTypes = {
+  deletePost: PropTypes.func.isRequired,
   addLike: PropTypes.func.isRequired,
   removeLike: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired, // Ana comp olan Post comp dan geldi, state(store) dan değil. o yüzden mapStateToProps da yok
@@ -66,4 +73,6 @@ const mapStateToProps = (state) => ({
   auth: state.auth, // for authenticated user info..
 });
 
-export default connect(mapStateToProps, { addLike, removeLike })(PostItem);
+export default connect(mapStateToProps, { addLike, removeLike, deletePost })(
+  PostItem
+);
