@@ -8,6 +8,7 @@ const ProfileAbout = ({
     skills,
     bio,
     user: { name },
+    githubusername,
   },
 }) => {
   return (

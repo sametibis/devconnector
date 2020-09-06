@@ -14,16 +14,16 @@ import AddEducation from './components/profile-form/AddEducation';
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
 import Posts from './components/posts/Posts';
+import Post from './components/post/Post';
+
 
 // Redux;
 import { Provider } from 'react-redux'; // connect react and redux
 import store from './store';
 
-
 import { loadUser } from './actions/auth';
 import setAuthToken from './utilities/setAuthToken';
 import './App.css';
-
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -71,12 +71,9 @@ const App = () => {
                 component={AddEducation}
               />
 
-              <PrivateRoute 
-                exact 
-                path='/posts' 
-                component={Posts} 
-              />
+              <PrivateRoute exact path='/posts' component={Posts} />
 
+              <PrivateRoute exact path='/posts/:postId' component={Post} />
             </Switch>
           </section>
         </Fragment>

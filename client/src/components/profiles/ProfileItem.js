@@ -9,6 +9,7 @@ const ProfileItem = ({
     company,
     location,
     skills,
+    githubusername
   },
 }) => {
   return (
@@ -16,6 +17,7 @@ const ProfileItem = ({
       <img src={avatar} alt='' className='round-img' />
       <div>
         <h2> {name} </h2>
+        <h4> {githubusername} </h4>
         <p>
           {' '}
           {status} {company && <span> at {company} </span>}{' '}
