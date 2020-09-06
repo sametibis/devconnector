@@ -5,6 +5,8 @@ import {
   DELETE_POST,
   ADD_POST,
   GET_POST,
+  ADD_COMMENT,
+  REMOVE_COMMENT,
 } from '../actions/types';
 
 const initialState = {
@@ -22,7 +24,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         posts: [payload, ...state.posts], // üstüne eklemesi için
-        // posts [...state.posts, payload]: alta ekliyor 
+        // posts [...state.posts, payload]: alta ekliyor
         loading: false,
       };
 
@@ -32,13 +34,39 @@ export default function (state = initialState, action) {
         posts: payload,
         loading: false,
       };
-    
+
     case GET_POST:
       return {
         ...state,
         post: payload,
-        loading: false
-      }
+        loading: false,
+      };
+
+    case ADD_COMMENT:
+      return {
+        ...state,
+        post: { ...state.post, comments: payload },
+        loading: false,
+        // posts: state.posts.map(
+        //   (post) =>
+        //     post._id === payload.postId && {
+        //       ...post,
+        //       comments: payload.comments,
+        //     }
+        // ),
+      };
+
+    case REMOVE_COMMENT:
+      return {
+        ...state,
+        post: {
+          ...state.post,
+          comments: state.post.comments.filter(
+            (comment) => comment._id !== payload
+          ),
+        },
+        loading: false,
+      };
 
     case POST_ERROR:
       return {
